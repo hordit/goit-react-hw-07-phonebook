@@ -1,4 +1,5 @@
 import { MagnifyingGlass } from 'react-loader-spinner';
+import PropTypes from 'prop-types';
 
 export const Loader = () => {
   return (
@@ -13,4 +14,15 @@ export const Loader = () => {
       color="#e15b64"
     />
   );
+};
+
+Loader.propTypes = {
+  visible: PropTypes.bool,
+  height: PropTypes.number,
+  width: PropTypes.number,
+  ariaLabel: PropTypes.string,
+  wrapperStyle: PropTypes.object,
+  wrapperClass: PropTypes.string,
+  glassColor: PropTypes.string,
+  color: PropTypes.string,
 };
