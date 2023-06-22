@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { DivWrapper, InputFilter } from './Filter.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilter, setFilter } from 'redux/contactsSlice';
@@ -9,7 +8,7 @@ export const Filter = () => {
 
   const handleChange = e => {
     dispatch(setFilter(e.target.value));
-  }
+  };
 
   return (
     <DivWrapper>
@@ -19,10 +18,4 @@ export const Filter = () => {
       </label>
     </DivWrapper>
   );
-};
-
-Filter.propTypes = {
-  type: PropTypes.string,
-  value: PropTypes.string,
-  onChange: PropTypes.func,
 };

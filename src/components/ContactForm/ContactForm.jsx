@@ -1,5 +1,4 @@
 import { Formik } from 'formik';
-import { nanoid } from 'nanoid';
 import {
   ButtonAdd,
   FormStyled,
@@ -8,16 +7,20 @@ import {
 } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contactsSlice';
-import { addContact } from 'redux/operations';
+import { addContact, fetchContacts } from 'redux/operations';
 import { capitalizedName } from 'Utils/capitalizedName';
+import { useEffect } from 'react';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
   const handleSubmit = (values, { resetForm }) => {
     const contact = {
-      id: nanoid(),
       name: values.name,
       number: values.number,
     };
@@ -30,7 +33,12 @@ export const ContactForm = () => {
       alert(`${capitalizedName(contact.name)} is already in contacts`);
       return resetForm();
     } else {
-      dispatch(addContact(contact));
+      dispatch(
+        addContact({
+          name: capitalizedName(contact.name),
+          number: contact.number,
+        })
+      );
       resetForm();
     }
   };
