@@ -6,7 +6,7 @@ import {
   Label,
 } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/contactsSlice';
+import { selectContacts } from 'redux/selectors';
 import { addContact, fetchContacts } from 'redux/operations';
 import { capitalizedName } from 'Utils/capitalizedName';
 import { useEffect } from 'react';
